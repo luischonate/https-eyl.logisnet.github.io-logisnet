@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E&L Logisnet - Transporte de Carga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height:1.6; scroll-behavior: smooth; }
+    a { text-decoration: none; color: inherit; }
+
+    header { background:#00264d; color:white; padding:20px 0; text-align:center; position: sticky; top:0; z-index:1000; }
+    header h1 { font-size:2rem; }
+    nav { display:flex; justify-content:center; gap:25px; margin-top:10px; }
+    nav a { color:white; font-weight:bold; padding:5px 10px; transition:0.3s; }
+    nav a:hover { background:#0055aa; border-radius:5px; }
+
+    .hero { background:url('https://images.unsplash.com/photo-1581091870621-97545e6b5b9b') center/cover no-repeat; color:white; text-align:center; padding:100px 20px; position:relative; }
+    .hero h2 { font-size:2.5rem; margin-bottom:15px; text-shadow: 2px 2px 6px #000; opacity:0; transform: translateY(20px); animation:fadeInUp 1s forwards 0.5s; }
+    .hero p { font-size:1.2rem; max-width:600px; margin:auto; text-shadow: 1px 1px 4px #000; opacity:0; transform: translateY(20px); animation:fadeInUp 1s forwards 1s; }
+
+    @keyframes fadeInUp { to { opacity:1; transform: translateY(0); } }
+
+    section { padding:60px 20px; }
+    h2 { text-align:center; margin-bottom:40px; color:#00264d; }
+
+    .services { display:flex; flex-wrap:wrap; justify-content:center; gap:25px; }
+    .service { background:#f2f2f2; padding:25px; width:280px; border-radius:10px; text-align:center; transition: transform 0.3s, box-shadow 0.3s; opacity:0; transform:translateY(20px); }
+    .service.visible { opacity:1; transform:translateY(0); }
+    .service:hover { transform: translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+    .service h3 { margin-bottom:15px; color:#0055aa; }
+
+    form { max-width:500px; margin:auto; display:flex; flex-direction:column; gap:15px; }
+    input, textarea, button { padding:12px; border-radius:5px; border:1px solid #ccc; width:100%; }
+    button { background:#0055aa; color:white; font-weight:bold; border:none; cursor:pointer; transition:0.3s; }
+    button:hover { background:#003366; }
+
+    .contact-info { text-align:center; line-height:1.8; }
+
+    footer { background:#00264d; color:white; text-align:center; padding:20px; }
+
+    /* WhatsApp flotante */
+    .whatsapp { position:fixed; bottom:20px; right:20px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:30px; box-shadow:0 5px 15px rgba(0,0,0,0.3); z-index:1000; transition:0.3s; }
+    .whatsapp:hover { transform: scale(1.1); }
+
+    /* Mapa */
+    #map { width:100%; height:400px; border-radius:10px; margin-top:20px; }
+
+    @media(max-width:768px){ .services { flex-direction: column; align-items:center; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>E&L Logisnet</h1>
+  <p>Transporte de carga rápido, seguro y confiable</p>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#cotizar">Cotización</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Movemos tu carga a cualquier destino</h2>
+  <p>Soluciones logísticas integrales, seguimiento en tiempo real y transporte seguro para todo tipo de carga.</p>
+</section>
+
+<section id="servicios">
+  <h2>Nuestros Servicios</h2>
+  <div class="services">
+    <div class="service">
+      <h3>Carga Terrestre</h3>
+      <p>Transporte seguro dentro del país con seguimiento en tiempo real y rutas optimizadas.</p>
+    </div>
+    <div class="service">
+      <h3>Carga Aérea</h3>
+      <p>Envíos urgentes nacionales e internacionales, entregas rápidas con control logístico completo.</p>
+    </div>
+    <div class="service">
+      <h3>Logística Integral</h3>
+      <p>Planificación y manejo completo de tu cadena de suministro, almacenamiento y distribución.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cotizar">
+  <h2>Solicita tu Cotización</h2>
+  <form onsubmit="alert('Cotización enviada. Nos comunicaremos pronto!'); return false;">
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo" required>
+    <input type="text" placeholder="Origen" required>
+    <input type="text" placeholder="Destino" required>
+    <textarea placeholder="Descripción de la carga" rows="4" required></textarea>
+    <button type="submit">Enviar Cotización</button>
+  </form>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <div class="contact-info">
+    <p>Email: contacto@el-logisnet.com</p>
+    <p>Teléfono: +51 123 456 789</p>
+    <p>Dirección: Av. Logística 456, Ciudad</p>
+    <div id="map"></div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 E&L Logisnet. Todos los derechos reservados.</p>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/51912345678" target="_blank" class="whatsapp">&#x1F4AC;</a>
+
+<!-- Script para animaciones al hacer scroll -->
+<script>
+  const services = document.querySelectorAll('.service');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    });
+  }, { threshold:0.2 });
+  services.forEach(service => observer.observe(service));
+</script>
+
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>
+<script>
+  function initMap(){
+    const ubicacion = {lat:-12.0464, lng:-77.0428}; // Lima, ejemplo
+    const map = new google.maps.Map(document.getElementById('map'), { zoom:12, center:ubicacion });
+    const marker = new google.maps.Marker({ position: ubicacion, map: map, title:"E&L Logisnet" });
+  }
+</script>
+
+</body>
+</html>
